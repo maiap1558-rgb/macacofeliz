@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>macaquinhofeliz</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .macacofeliz {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100vh;
+            background-image: url('macacomaisquefeliz.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7; /* Mantém a transparência que você ajustou */
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 2px solid #86efac;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 { 
+            color: #166534; 
+            font-size: 22px; 
+            margin-bottom: 20px; 
+        }
+
+        .buttons { 
+            margin-top: 20px; 
+            position: relative; 
+            height: 80px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            gap: 20px; 
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 5;
+        }
+
+        #btn-nao { 
+            background-color: #ef4444; 
+            color: white; 
+        }
+
+        #btn-sim { 
+            background-color: #22c55e; 
+            color: white; 
+            transition: 0.1s ease; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fundo com a classe macacofeliz -->
+    <div class="macacofeliz"></div>
+
+    <!-- Caixa centralizada com a mensagem -->
+    <div class="container" id="box">
+        <h1>Parabéns, você desbloqueou o presente! 🎉</h1>
+  
+    </div>
+
+    <script>
+        function fugir() {
+            const btnSim = document.getElementById('btn-sim');
+            
+            const maxX = window.innerWidth - 140;
+            const maxY = window.innerHeight - 80;
+            
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+            
+            btnSim.style.position = 'fixed';
+            btnSim.style.left = randomX + 'px';
+            btnSim.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
