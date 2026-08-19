@@ -1,1 +1,85 @@
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Um mimo especial pra você!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #dcfce7;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 2px solid #86efac;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+        h1 { color: #166534; font-size: 24px; margin-bottom: 20px; }
+        .buttons { 
+            margin-top: 20px; 
+            position: relative; 
+            height: 80px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            gap: 20px; 
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 5;
+        }
+        #btn-nao { background-color: #ef4444; color: white; }
+        #btn-sim { background-color: #22c55e; color: white; transition: 0.1s ease; }
+    </style>
+</head>
+<body>
+    <div class="container" id="box">
+        <h1>Você me ama? 🧐</h1>
+        <div class="buttons" id="area-botoes">
+            <!-- Aqui colocamos o botão "NÃO" dentro de um link -->
+            <a href="folha2.html">
+                <button id="btn-nao" type="button">NÃO</button>
+            </a>
+            
+            <button id="btn-sim" onmouseover="fugir()" ontouchstart="fugir()">SIM</button>
+        </div>
+    </div>
+    <script>
+        function fugir() {
+            const btnSim = document.getElementById('btn-sim');
+            const box = document.getElementById('box');
+            
+            // Pega o tamanho da caixinha branca para o botão não escapar dela ou ir para trás de margens erradas
+            const boxRect = box.getBoundingClientRect();
+            
+            // Gera posições relativas seguras dentro da tela do dispositivo
+            const maxX = window.innerWidth - 140;
+            const maxY = window.innerHeight - 80;
+            
+            const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+            
+            btnSim.style.position = 'fixed';
+            btnSim.style.left = randomX + 'px';
+            btnSim.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+</html>
