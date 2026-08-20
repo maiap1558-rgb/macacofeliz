@@ -14,19 +14,16 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
 
-        .macacofeliz {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100vh;
-            background-image: url('macacomaisquefeliz.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.7; /* Mantém a transparência que você ajustou */
-            z-index: 1;
+            .emojifeliz{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                position: fixed;
+                opacity: 80%;
+            }
+
         }
 
         .container {
@@ -81,19 +78,32 @@
     </style>
 </head>
 <body>
-
-    <!-- Fundo com a classe macacofeliz -->
-    <div class="macacofeliz"></div>
-
+    <div class="emojifeliz">
+        <img src="ChatGPT Image 20 de ago. de 2026, 09_16_05.png" alt="">
+    </div>
     <!-- Caixa centralizada com a mensagem -->
     <div class="container" id="box">
         <h1>Parabéns, você desbloqueou o presente! 🎉</h1>
   
     </div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script>
+        function dispararConfetes() {
+            confetti({
+                particleCount: 1000,
+                spread: 7000,
+                origin: { y: 0.40 }
+            });
+        }
+
+        window.onload = dispararConfetes;
+
         function fugir() {
             const btnSim = document.getElementById('btn-sim');
+            const box = document.getElementById('box');
+            
+            const boxRect = box.getBoundingClientRect();
             
             const maxX = window.innerWidth - 140;
             const maxY = window.innerHeight - 80;
